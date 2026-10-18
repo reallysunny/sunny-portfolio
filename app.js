@@ -21,7 +21,7 @@ const portraitToggle = document.querySelector('#portrait-toggle');
 
 function syncPortraitState() {
   portraitToggle.setAttribute('aria-expanded', String(portraitDetails.open));
-  portraitToggle.setAttribute('aria-label', portraitDetails.open ? 'Collapse Sunny Desai’s profile photo' : 'Expand Sunny Desai’s profile photo');
+  portraitToggle.setAttribute('aria-label', portraitDetails.open ? 'Collapse Sunny’s California illustration' : 'Expand Sunny’s California illustration');
 }
 
 // Native <details> keeps the portrait expandable even if this script is cached or unavailable.
