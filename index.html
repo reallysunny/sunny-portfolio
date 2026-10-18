@@ -10,14 +10,23 @@
   <meta property="og:description" content="10+ years across mobile, backend, SDKs, and platforms. Leading architecture, coordinating teams and resources, and delivering products. Available to interview immediately.">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=1a52fff974a0">
+  <link rel="stylesheet" href="styles.css?v=ed9f2d114ae6">
   <script src="app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="header">
     <div class="header-inner">
-      <a class="brand" href="#top" aria-label="Sunny Desai, back to top">sd<span>.</span></a>
+      <div class="brand-wrap">
+        <button class="brand" id="portrait-toggle" type="button" aria-label="Expand Sunny Desai’s profile photo" aria-expanded="false" aria-controls="portrait-popover">
+          <img src="assets/Sunny-Desai-Portrait.png" alt="" width="40" height="40">
+        </button>
+        <div class="portrait-popover" id="portrait-popover" hidden>
+          <img src="assets/Sunny-Desai-Portrait.png" alt="Sunny Desai" width="200" height="200">
+          <p>Sunny Desai</p>
+          <span>SOFTWARE ENGINEER · SUNNYVALE, CA</span>
+        </div>
+      </div>
       <nav aria-label="Main navigation">
         <a href="#experience">Experience</a>
         <a href="#portfolio">Portfolio</a>

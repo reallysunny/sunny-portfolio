@@ -15,6 +15,31 @@ copyButton.addEventListener('click', async () => {
 
 document.querySelector('#year').textContent = new Date().getFullYear();
 
+// Expand the header portrait in place and close it with Escape or an outside click.
+const portraitToggle = document.querySelector('#portrait-toggle');
+const portraitPopover = document.querySelector('#portrait-popover');
+
+function setPortraitExpanded(expanded) {
+  portraitToggle.setAttribute('aria-expanded', String(expanded));
+  portraitToggle.setAttribute('aria-label', expanded ? 'Collapse Sunny Desai’s profile photo' : 'Expand Sunny Desai’s profile photo');
+  portraitPopover.hidden = !expanded;
+}
+
+portraitToggle.addEventListener('click', () => {
+  setPortraitExpanded(portraitToggle.getAttribute('aria-expanded') !== 'true');
+});
+
+document.addEventListener('click', event => {
+  if (!portraitToggle.contains(event.target) && !portraitPopover.contains(event.target)) setPortraitExpanded(false);
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && portraitToggle.getAttribute('aria-expanded') === 'true') {
+    setPortraitExpanded(false);
+    portraitToggle.focus();
+  }
+});
+
 // Preserve links to projects shared from the previous version of the site.
 const oldProjects = { verily: 'work-verily', aws: 'work-aws', sdk: 'work-sdk', aosp: 'work-aosp' };
 function openLinkedProject() {
