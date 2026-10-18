@@ -1,44 +1,40 @@
-# Sunny Desai — engineering portfolio
+# Sunny Desai — professional portfolio
 
-A responsive, black-and-white developer workspace portfolio for GitHub Pages. Built with HTML, CSS, and JavaScript, with no build step or package dependencies.
+A compact, responsive professional profile with a white background, black typography, and a single-page layout. Built with HTML, CSS, and a small JavaScript enhancement file; no dependencies or build step.
 
-Includes an editor-style file explorer and tabs, searchable command palette (Cmd/Ctrl K), expandable project files, category filters, experience and skills views, and a working terminal. Terminal commands include `help`, `about`, `whoami`, `projects`, `experience`, `skills`, `contact`, `resume`, `ls`, `open verily|aws|sdk|aosp`, and `clear`. Arrow keys recall terminal history. Standard navigation links provide access to every view without using the terminal. All fonts are local system fonts.
+The page includes a professional summary, experience, four expandable work summaries, technical expertise, education, contact links, and the supplied resume as a downloadable PDF. All content and project disclosures work without JavaScript. JavaScript adds email copying, active section navigation, and support for direct project links.
 
-Resume downloads and email links work directly; there is no form backend or visitor tracking. Respects reduced-motion preferences.
-
-## Launch on GitHub Pages
-
-Run from your Mac Terminal:
+## Publish or update
 
 ```bash
 cd /Users/sunnydesai/ReallySunny/Web/sunny-portfolio
 ./launch.sh
 ```
 
-The script uses your authenticated GitHub account, creates a public `sunny-portfolio` repository, enables GitHub Pages, and pushes the site. It stops if an unrelated repository already exists. Your resume PDF is included as a public download. Check the repository's Actions tab for deployment completion.
+The script uses your authenticated GitHub account. It creates the public repository on first launch, or commits and pushes the current site to the existing matching repository. GitHub Actions publishes changes to GitHub Pages. The resume PDF is included in the public site.
 
-Expected URL for @reallysunny: https://reallysunny.github.io/sunny-portfolio/
+For @reallysunny, the site address is https://reallysunny.github.io/sunny-portfolio/. Verify completion in the repository's Actions tab.
 
 ## Preview
+
+Open `index.html` directly in a browser, or run:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Open http://localhost:8080. To open without a server, open `index.html` in a browser; the email copy feature requires a secure context or localhost and falls back to selecting the address.
+Then open http://localhost:8080. If clipboard access is unavailable, the copy button displays the email address for manual copying.
 
-## Content and maintenance
+## Editing
 
-- `index.html`: main page, career timeline, about, and contact.
-- `app.js`: project details, expertise data, and interactions.
-- `styles.css`: responsive layout and monochrome styling.
+- `index.html`: all profile content, project details, experience, expertise, education, and contact links.
+- `styles.css`: responsive black-and-white layout, focus states, reduced-motion support, and print styling.
+- `app.js`: email copy, section highlighting, and direct project links.
 - `assets/Sunny-Desai-Resume.pdf`: original supplied resume.
-- `.github/workflows/pages.yml`: automatic deployment for pushes to `main`.
+- `.github/workflows/pages.yml`: deployment on pushes to `main`.
 
-Content is derived from the supplied October 1, 2026 resume and LinkedIn profile PDF. Resume role summaries take precedence; the LinkedIn export supplies additional technical detail and education context. Diagrams are conceptual illustrations rather than product screenshots. No employer source code, performance metrics, testimonials, or client endorsements are invented.
+Content is based on the supplied October 1, 2026 resume and LinkedIn profile export. No performance metrics, testimonials, or employer materials have been invented. All fonts are local system fonts. The site uses relative asset paths, supports GitHub Pages repository hosting, and has no analytics or backend services. It does not change the existing sunnyddesai.com website.
 
-All paths are relative, so deployment also works at a repository subpath. The site does not set a custom domain or change the existing sunnyddesai.com website.
+## Verification
 
-## Validation
-
-JavaScript syntax, duplicate IDs, internal links, and assets were checked. A simulated DOM verified page routing, invalid-route fallback, project and skill rendering, project filters/deep links, terminal commands and history-related UI, palette search/activation, and terminal collapse. Interactive browser and visual checks could not run because computer-use permissions were unavailable. Remote deployment requires GitHub network access.
+JavaScript and launch-script syntax, duplicate HTML IDs, local asset paths, navigation anchors, project disclosures, and resume integrity were checked. Browser rendering could not be verified because computer-use permissions were unavailable. Publishing requires GitHub network access.
