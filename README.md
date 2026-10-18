@@ -1,8 +1,10 @@
 # Sunny Desai — engineering portfolio
 
-A responsive, black-and-white resume and portfolio website for GitHub Pages. Built with HTML, CSS, and JavaScript, with no build step or package dependencies.
+A responsive, black-and-white developer workspace portfolio for GitHub Pages. Built with HTML, CSS, and JavaScript, with no build step or package dependencies.
 
-Includes filterable project highlights, accessible project dialogs, expandable career history, keyboard-operated expertise tabs, mobile navigation, email copy, and a downloadable resume. Respects reduced-motion preferences. Email links open the visitor's mail client; there is no form backend or visitor tracking.
+Includes an editor-style file explorer and tabs, searchable command palette (Cmd/Ctrl K), expandable project files, category filters, experience and skills views, and a working terminal. Terminal commands include `help`, `about`, `whoami`, `projects`, `experience`, `skills`, `contact`, `resume`, `ls`, `open verily|aws|sdk|aosp`, and `clear`. Arrow keys recall terminal history. Standard navigation links provide access to every view without using the terminal. All fonts are local system fonts.
+
+Resume downloads and email links work directly; there is no form backend or visitor tracking. Respects reduced-motion preferences.
 
 ## Launch on GitHub Pages
 
@@ -35,8 +37,8 @@ Open http://localhost:8080. To open without a server, open `index.html` in a bro
 
 Content is derived from the supplied October 1, 2026 resume and LinkedIn profile PDF. Resume role summaries take precedence; the LinkedIn export supplies additional technical detail and education context. Diagrams are conceptual illustrations rather than product screenshots. No employer source code, performance metrics, testimonials, or client endorsements are invented.
 
-Google Fonts supplies DM Sans and Manrope when online; system fonts are used if unavailable. All paths are relative, so deployment also works at a repository subpath. The site does not set a custom domain or change the existing sunnyddesai.com website.
+All paths are relative, so deployment also works at a repository subpath. The site does not set a custom domain or change the existing sunnyddesai.com website.
 
 ## Validation
 
-JavaScript and shell syntax, duplicate IDs, internal anchor references, local asset paths, data mappings, and all four project's filter categories were checked. Interactive browser and visual checks could not run because computer-use permissions were unavailable. Remote deployment requires GitHub network access.
+JavaScript syntax, duplicate IDs, internal links, and assets were checked. A simulated DOM verified page routing, invalid-route fallback, project and skill rendering, project filters/deep links, terminal commands and history-related UI, palette search/activation, and terminal collapse. Interactive browser and visual checks could not run because computer-use permissions were unavailable. Remote deployment requires GitHub network access.

@@ -26,6 +26,10 @@ fi
 if ! gh api "repos/$full_repo/pages" >/dev/null 2>&1; then
   gh api --method POST "repos/$full_repo/pages" -f build_type=workflow >/dev/null
 fi
+git add index.html styles.css app.js assets .github .gitignore .nojekyll README.md launch.sh
+if ! git diff --cached --quiet; then
+  git -c user.name="$owner" -c user.email="$owner@users.noreply.github.com" commit -m 'Update Sunny Desai developer workspace portfolio'
+fi
 git push -u origin main
 url="https://$owner.github.io/$repo/"
 gh repo edit "$full_repo" --homepage "$url"
