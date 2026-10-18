@@ -25,7 +25,7 @@ p { color: var(--muted); }
 .brand::marker { content: ''; }
 .brand img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .brand:hover { outline: 2px solid #ddd; outline-offset: 2px; }
-.portrait-popover { position: absolute; top: calc(100% + 12px); left: 0; z-index: 12; width: 265px; padding: 13px; border: 1px solid #ddd; border-radius: 7px; background: #fff; box-shadow: 0 12px 36px #0002; }
+.portrait-popover { position: absolute; top: calc(100% + 12px); left: 0; z-index: 12; width: min(520px, calc(100vw - 32px)); padding: 13px; border: 1px solid #ddd; border-radius: 7px; background: #fff; box-shadow: 0 12px 36px #0002; }
 .portrait-popover > img { display: block; width: 100%; height: auto; margin: 0 auto 12px; border: 1px solid #ddd; border-radius: 3px; }
 .portrait-popover > p { font-size: 15px; font-weight: 600; color: #222; text-align: center; }
 .portrait-popover > span { display: block; margin-top: 3px; font-size: 9px; letter-spacing: .7px; color: #777; text-align: center; }
@@ -142,7 +142,7 @@ h1 > span { color: #9b9b9b; }
   .container, .header-inner { width: calc(100% - 40px); }
   .header-inner { height: auto; min-height: 64px; flex-wrap: wrap; gap: 0; padding-top: 15px; }
   .brand { width: 38px; height: 38px; }
-  .portrait-popover { width: 220px; }
+  .portrait-popover { width: min(520px, calc(100vw - 32px)); }
   .portrait-popover > img { width: 180px; height: 180px; }
   .header-resume { margin-left: auto; font-size: 10px; padding: 5px 10px; gap: 15px; }
   .header nav { width: 100%; order: 3; justify-content: space-between; gap: 16px; margin-top: 7px; }
