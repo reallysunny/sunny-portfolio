@@ -29,18 +29,42 @@ function openLinkedProject() {
 window.addEventListener('hashchange', openLinkedProject);
 openLinkedProject();
 
-// Highlight the section currently in view without changing browser history.
-if ('IntersectionObserver' in window) {
-  const links = [...document.querySelectorAll('.header nav a')];
-  const sections = links.map(link => document.querySelector(link.getAttribute('href')));
-  const visible = new Set();
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => entry.isIntersecting ? visible.add(entry.target) : visible.delete(entry.target));
-    const active = sections.find(section => visible.has(section));
-    links.forEach(link => {
-      if (active && link.hash === `#${active.id}`) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    });
-  }, { rootMargin: '-100px 0px -45% 0px', threshold: 0 });
-  sections.forEach(section => observer.observe(section));
+// Keep the tab highlight aligned with the section nearest the sticky header.
+const header = document.querySelector('.header');
+const navLinks = [...document.querySelectorAll('.header nav a')];
+const navSections = navLinks.map(link => document.getElementById(link.hash.slice(1))).filter(Boolean);
+
+function showActiveSection(section) {
+  navLinks.forEach(link => {
+    if (section && link.hash === `#${section.id}`) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
 }
+
+function updateActiveSection() {
+  const scrollOffset = Number.parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+  const marker = Math.max(header.getBoundingClientRect().bottom, scrollOffset) + 2;
+  let activeSection = null;
+  for (const section of navSections) {
+    if (section.getBoundingClientRect().top <= marker) activeSection = section;
+    else break;
+  }
+  showActiveSection(activeSection);
+}
+
+let scrollFrame = 0;
+function scheduleActiveSectionUpdate() {
+  if (scrollFrame) return;
+  scrollFrame = requestAnimationFrame(() => {
+    scrollFrame = 0;
+    updateActiveSection();
+  });
+}
+
+navLinks.forEach(link => link.addEventListener('click', () => {
+  showActiveSection(document.getElementById(link.hash.slice(1)));
+}));
+window.addEventListener('scroll', scheduleActiveSectionUpdate, { passive: true });
+window.addEventListener('resize', scheduleActiveSectionUpdate);
+window.addEventListener('hashchange', scheduleActiveSectionUpdate);
+updateActiveSection();
