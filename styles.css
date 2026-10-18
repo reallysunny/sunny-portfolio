@@ -171,6 +171,9 @@ h1 > span { color: var(--accent); }
 .footer { padding-top: 12px; padding-bottom: 17px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 25px; font-size: var(--type-ui); color: var(--muted); }
 .footer > div { display: flex; gap: 24px; }
 .footer a { display: inline-block; padding-block: 8px; }
+.back-to-top { position: fixed; right: max(20px, calc((100vw - 1040px) / 2)); bottom: max(20px, env(safe-area-inset-bottom)); z-index: 9; width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); color: var(--accent); box-shadow: 0 3px 14px #0002; }
+.back-to-top:hover { border-color: var(--accent); background: var(--accent-soft); }
+.back-to-top svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .skip-link:not(:focus) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
 .skip-link:focus { position: fixed; top: 10px; left: 10px; padding: 10px 15px; background: var(--surface); color: var(--accent); border: 1px solid var(--accent); z-index: 20; }
 @media (max-width: 960px) {
@@ -254,7 +257,7 @@ h1 > span { color: var(--accent); }
 @media print {
   :root { --type-display: 38px; --type-lead: 18px; }
   body { font-size: var(--type-print); }
-  .header, .intro-actions, .profile-links, #copy-email, .footer, .expand-icon { display: none; }
+  .header, .intro-actions, .profile-links, #copy-email, .footer, .expand-icon, .back-to-top { display: none; }
   .container { width: 100%; }
   .intro { padding: 0 0 25px; gap: 40px; grid-template-columns: 1fr 220px; }
   h1 { font-size: var(--type-display); }

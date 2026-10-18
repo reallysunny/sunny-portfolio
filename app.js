@@ -88,6 +88,7 @@ openLinkedProject();
 
 // Keep the tab highlight aligned with the section nearest the sticky header.
 const header = document.querySelector('.header');
+const backToTop = document.querySelector('#back-to-top');
 const navLinks = [...document.querySelectorAll('.header nav a')];
 const navSections = navLinks.map(link => document.getElementById(link.hash.slice(1))).filter(Boolean);
 
@@ -99,6 +100,7 @@ function showActiveSection(section) {
 }
 
 function updateActiveSection() {
+  backToTop.hidden = window.scrollY < 400;
   const scrollOffset = Number.parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
   const marker = Math.max(header.getBoundingClientRect().bottom, scrollOffset) + 2;
   let activeSection = null;
