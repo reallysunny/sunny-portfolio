@@ -73,7 +73,7 @@ h1 > span { color: var(--accent); }
 .summary { max-width: 620px; font-size: 16px; line-height: 1.8; margin-top: 18px; }
 .summary > span { display: block; }
 .intro-actions { display: flex; gap: 11px; flex-wrap: wrap; margin-top: 25px; }
-.button { display: inline-flex; align-items: center; gap: 9px; font-size: 13px; padding: 10px 17px; border-radius: 5px; border: 1px solid var(--line); font-weight: 500; }
+.button { display: inline-flex; align-items: center; gap: 9px; white-space: nowrap; font-size: 13px; padding: 10px 17px; border-radius: 5px; border: 1px solid var(--line); font-weight: 500; }
 .link-icon { width: 14px; height: 14px; display: inline-block; flex: 0 0 auto; vertical-align: -2px; fill: none; stroke: currentColor; stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
 .brand-icon { fill: currentColor; stroke: none; }
 .linkedin-icon { stroke: none; }
