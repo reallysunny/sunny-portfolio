@@ -16,26 +16,25 @@ copyButton.addEventListener('click', async () => {
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 // Expand the header portrait in place and close it with Escape or an outside click.
+const portraitDetails = document.querySelector('#portrait-details');
 const portraitToggle = document.querySelector('#portrait-toggle');
-const portraitPopover = document.querySelector('#portrait-popover');
 
-function setPortraitExpanded(expanded) {
-  portraitToggle.setAttribute('aria-expanded', String(expanded));
-  portraitToggle.setAttribute('aria-label', expanded ? 'Collapse Sunny Desai’s profile photo' : 'Expand Sunny Desai’s profile photo');
-  portraitPopover.hidden = !expanded;
+function syncPortraitState() {
+  portraitToggle.setAttribute('aria-expanded', String(portraitDetails.open));
+  portraitToggle.setAttribute('aria-label', portraitDetails.open ? 'Collapse Sunny Desai’s profile photo' : 'Expand Sunny Desai’s profile photo');
 }
 
-portraitToggle.addEventListener('click', () => {
-  setPortraitExpanded(portraitToggle.getAttribute('aria-expanded') !== 'true');
-});
+// Native <details> keeps the portrait expandable even if this script is cached or unavailable.
+portraitDetails.addEventListener('toggle', syncPortraitState);
+syncPortraitState();
 
 document.addEventListener('click', event => {
-  if (!portraitToggle.contains(event.target) && !portraitPopover.contains(event.target)) setPortraitExpanded(false);
+  if (!portraitDetails.contains(event.target)) portraitDetails.open = false;
 });
 
 document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && portraitToggle.getAttribute('aria-expanded') === 'true') {
-    setPortraitExpanded(false);
+  if (event.key === 'Escape' && portraitDetails.open) {
+    portraitDetails.open = false;
     portraitToggle.focus();
   }
 });
