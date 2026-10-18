@@ -13,7 +13,7 @@ cd /Users/sunnydesai/ReallySunny/Web/sunny-portfolio
 
 The script uses your authenticated GitHub account. It creates the public repository on first launch, or commits and pushes the current site to the existing matching repository. GitHub Actions publishes changes to GitHub Pages. The resume PDF is included in the public site.
 
-For @reallysunny, the site address is https://reallysunny.github.io/sunny-portfolio/. Verify completion in the repository's Actions tab.
+The site is served at http://reallysunny.com/ (custom domain set in the repository’s Pages settings; https://reallysunny.github.io/sunny-portfolio/ redirects there). Once GitHub issues an HTTPS certificate, switch the `canonical`, `og:` and JSON-LD URLs in `index.html` to `https://`. Verify completion in the repository's Actions tab.
 
 ## Preview
 
