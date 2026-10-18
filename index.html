@@ -18,7 +18,7 @@
   <link rel="canonical" href="http://reallysunny.com/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css?v=655baab2c9f8">
+  <link rel="stylesheet" href="styles.css?v=45ec48d8f814">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,7 +37,7 @@
     "sameAs": ["https://www.linkedin.com/in/sunnyddesai/", "https://github.com/reallysunny"]
   }
   </script>
-  <script src="app.js?v=dddf51d49436" defer></script>
+  <script src="app.js?v=0237f810bc70" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -59,7 +59,20 @@
         <a href="#expertise">Expertise</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="header-resume" href="assets/Sunny-Desai-Resume.pdf" download>Resume <span aria-hidden="true">↓</span></a>
+      <div class="header-actions">
+        <details class="theme-picker" id="theme-picker">
+          <summary id="theme-toggle" class="theme-toggle" aria-label="Choose site colors" aria-expanded="false" aria-controls="theme-palette" title="Choose site colors"><span class="theme-dot" aria-hidden="true"></span></summary>
+          <div class="theme-palette" id="theme-palette" role="group" aria-label="Site color combinations">
+            <p>Choose a color combination</p>
+            <button class="theme-option" type="button" data-theme-choice="mono" aria-pressed="true"><span class="theme-swatch" aria-hidden="true"></span><span>Black &amp; white</span></button>
+            <button class="theme-option" type="button" data-theme-choice="ocean" aria-pressed="false"><span class="theme-swatch" aria-hidden="true"></span><span>Ocean blue</span></button>
+            <button class="theme-option" type="button" data-theme-choice="forest" aria-pressed="false"><span class="theme-swatch" aria-hidden="true"></span><span>Forest green</span></button>
+            <button class="theme-option" type="button" data-theme-choice="amber" aria-pressed="false"><span class="theme-swatch" aria-hidden="true"></span><span>Warm amber</span></button>
+            <button class="theme-option" type="button" data-theme-choice="violet" aria-pressed="false"><span class="theme-swatch" aria-hidden="true"></span><span>Violet</span></button>
+          </div>
+        </details>
+        <a class="header-resume" href="assets/Sunny-Desai-Resume.pdf" download>Resume <span aria-hidden="true">↓</span></a>
+      </div>
     </div>
   </header>
   <main id="main" class="container">

@@ -15,6 +15,34 @@ copyButton.addEventListener('click', async () => {
 
 document.querySelector('#year').textContent = new Date().getFullYear();
 
+// Let visitors choose a subtle accent palette and remember their preference.
+const themePicker = document.querySelector('#theme-picker');
+const themeToggle = document.querySelector('#theme-toggle');
+const themeOptions = [...document.querySelectorAll('[data-theme-choice]')];
+const themeNames = new Set(themeOptions.map(option => option.dataset.themeChoice));
+
+function applyTheme(theme) {
+  if (!themeNames.has(theme)) return;
+  document.documentElement.dataset.theme = theme;
+  themeOptions.forEach(option => option.setAttribute('aria-pressed', String(option.dataset.themeChoice === theme)));
+  try { localStorage.setItem('sunny-site-theme', theme); } catch { /* Storage may be unavailable in private browsing. */ }
+}
+
+try {
+  const savedTheme = localStorage.getItem('sunny-site-theme');
+  if (savedTheme && themeNames.has(savedTheme)) document.documentElement.dataset.theme = savedTheme;
+} catch { /* The default palette remains available without storage. */ }
+const initialTheme = document.documentElement.dataset.theme || 'mono';
+themeOptions.forEach(option => option.setAttribute('aria-pressed', String(option.dataset.themeChoice === initialTheme)));
+
+themeOptions.forEach(option => option.addEventListener('click', () => {
+  applyTheme(option.dataset.themeChoice);
+  themePicker.open = false;
+  themeToggle.focus();
+}));
+themePicker.addEventListener('toggle', () => themeToggle.setAttribute('aria-expanded', String(themePicker.open)));
+themeToggle.setAttribute('aria-expanded', String(themePicker.open));
+
 // Expand the header portrait in place and close it with Escape or an outside click.
 const portraitDetails = document.querySelector('#portrait-details');
 const portraitToggle = document.querySelector('#portrait-toggle');
@@ -30,12 +58,17 @@ syncPortraitState();
 
 document.addEventListener('click', event => {
   if (!portraitDetails.contains(event.target)) portraitDetails.open = false;
+  if (!themePicker.contains(event.target)) themePicker.open = false;
 });
 
 document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && portraitDetails.open) {
+  if (event.key === 'Escape') {
+    const closeTheme = themePicker.open;
+    const closePortrait = portraitDetails.open;
+    themePicker.open = false;
     portraitDetails.open = false;
-    portraitToggle.focus();
+    if (closeTheme) themeToggle.focus();
+    else if (closePortrait) portraitToggle.focus();
   }
 });
 
