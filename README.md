@@ -31,10 +31,13 @@ Then open http://localhost:8080. If clipboard access is unavailable, the copy bu
 - `styles.css`: responsive black-and-white layout, focus states, reduced-motion support, and print styling.
 - `app.js`: email copy, section highlighting, and direct project links.
 - `assets/Sunny-Desai-Resume.pdf`: original supplied resume.
+- `assets/*.webp`: portrait and illustration, resized for the sizes they display at.
+- `assets/og-image.jpg`, `assets/apple-touch-icon.png`: link-preview card and home-screen icon.
+- `source-images/`: full-resolution originals. Not deployed; re-export WebP files from these when an image changes.
 - `.github/workflows/pages.yml`: deployment on pushes to `main`.
 
 Content is based on the supplied October 1, 2026 resume and LinkedIn profile export. No performance metrics, testimonials, or employer materials have been invented. All fonts are local system fonts. The site uses relative asset paths, supports GitHub Pages repository hosting, and has no analytics or backend services. It does not change the existing sunnyddesai.com website.
 
 ## Verification
 
-JavaScript and launch-script syntax, duplicate HTML IDs, local asset paths, navigation anchors, project disclosures, and resume integrity were checked. Browser rendering could not be verified because computer-use permissions were unavailable. Publishing requires GitHub network access.
+Checked with headless Chrome at desktop (1280px) and mobile (390px) widths: layout, project disclosures and direct project links, the header illustration popover, active-section highlighting (including Contact at the page bottom), and print expansion of all projects. Initial page weight is about 55 KB. Publishing requires GitHub network access.

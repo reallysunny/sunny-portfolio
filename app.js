@@ -69,6 +69,11 @@ function updateActiveSection() {
   const scrollOffset = Number.parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
   const marker = Math.max(header.getBoundingClientRect().bottom, scrollOffset) + 2;
   let activeSection = null;
+  // The last sections are too short to reach the marker, so treat the page bottom as the last one.
+  if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+    showActiveSection(navSections.at(-1));
+    return;
+  }
   for (const section of navSections) {
     if (section.getBoundingClientRect().top <= marker) activeSection = section;
     else break;
@@ -92,3 +97,14 @@ window.addEventListener('scroll', scheduleActiveSectionUpdate, { passive: true }
 window.addEventListener('resize', scheduleActiveSectionUpdate);
 window.addEventListener('hashchange', scheduleActiveSectionUpdate);
 updateActiveSection();
+
+// Print every project expanded, then restore the reader's open/closed choices.
+const projects = [...document.querySelectorAll('.project')];
+let openBeforePrint = [];
+window.addEventListener('beforeprint', () => {
+  openBeforePrint = projects.map(project => project.open);
+  projects.forEach(project => { project.open = true; });
+});
+window.addEventListener('afterprint', () => {
+  projects.forEach((project, index) => { project.open = openBeforePrint[index]; });
+});

@@ -19,14 +19,14 @@ else
     exit 1
   fi
   git init -b main
-  git add index.html styles.css app.js assets .github .gitignore .nojekyll README.md launch.sh
+  git add index.html styles.css app.js assets source-images .github .gitignore .nojekyll README.md launch.sh
   git -c user.name="$owner" -c user.email="$owner@users.noreply.github.com" commit -m 'Create Sunny Desai portfolio'
   gh repo create "$full_repo" --public --source . --remote origin --description 'Sunny Desai — software engineering portfolio and resume'
 fi
 if ! gh api "repos/$full_repo/pages" >/dev/null 2>&1; then
   gh api --method POST "repos/$full_repo/pages" -f build_type=workflow >/dev/null
 fi
-git add index.html styles.css app.js assets .github .gitignore .nojekyll README.md launch.sh
+git add index.html styles.css app.js assets source-images .github .gitignore .nojekyll README.md launch.sh
 if ! git diff --cached --quiet; then
   git -c user.name="$owner" -c user.email="$owner@users.noreply.github.com" commit -m 'Update Sunny Desai professional portfolio'
 fi
