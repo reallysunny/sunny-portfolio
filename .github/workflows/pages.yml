@@ -22,6 +22,11 @@ jobs:
         run: |
           mkdir _site
           cp index.html styles.css app.js .nojekyll _site/
+          # Stamp "Last updated" with the date of the commit being deployed (Pacific time).
+          iso="$(TZ=America/Los_Angeles git log -1 --date=format-local:%Y-%m-%d --format=%cd)"
+          human="$(TZ=America/Los_Angeles git log -1 --date='format-local:%B %-d, %Y' --format=%cd)"
+          sed -i -E "s|<time id=\"last-updated\" datetime=\"[^\"]*\">[^<]*</time>|<time id=\"last-updated\" datetime=\"$iso\">$human</time>|" _site/index.html
+          grep -q "datetime=\"$iso\">$human</time>" _site/index.html
           cp -R assets _site/assets
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

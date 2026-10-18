@@ -34,7 +34,7 @@ Then open http://localhost:8080. If clipboard access is unavailable, the copy bu
 - `assets/*.webp`: portrait and illustration, resized for the sizes they display at.
 - `assets/og-image.jpg`, `assets/apple-touch-icon.png`: link-preview card and home-screen icon.
 - `source-images/`: full-resolution originals. Not deployed; re-export WebP files from these when an image changes.
-- `.github/workflows/pages.yml`: deployment on pushes to `main`.
+- `.github/workflows/pages.yml`: deployment on pushes to `main`. It also stamps the "Last updated" date at the top of the page with the deployed commit’s date (Pacific time), so it never needs editing by hand.
 
 Content is based on the supplied October 1, 2026 resume and LinkedIn profile export. No performance metrics, testimonials, or employer materials have been invented. All fonts are local system fonts. The site uses relative asset paths, supports GitHub Pages repository hosting, and has no analytics or backend services. It does not change the existing sunnyddesai.com website.
 
